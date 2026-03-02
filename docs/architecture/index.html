@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Architecture • Watermelon Expo Enhanced</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="kicker">System</p>
+        <h1>Architecture</h1>
+        <p class="subtitle">How the app wires SQLite, Watermelon models, and reactive UI updates.</p>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../">Home</a>
+          <a href="../getting-started/">Getting Started</a>
+          <a href="../reactive-api/">Reactive API</a>
+          <a href="../architecture/">Architecture</a>
+          <a href="../troubleshooting/">Troubleshooting</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <h2>Flow overview</h2>
+        <pre><code>UI (App.tsx)
+  -> useReactiveQuery(() => reactive.from('tasks')...)
+Reactive Client (src/database/reactive.ts)
+  -> createReactiveClient(database)
+Database (src/database/index.ts)
+  -> new Database({ adapter, modelClasses })
+SQLite Adapter
+  -> Watermelon local SQLite storage</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Core files</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>src/database/schema.ts</code></td>
+                <td>Defines app schema and table columns.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/models/Task.ts</code></td>
+                <td>Task model read/write helpers around raw record fields.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/index.ts</code></td>
+                <td>Initializes SQLite adapter and Watermelon database instance.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/reactive.ts</code></td>
+                <td>Exports reactive query client and row types.</td>
+              </tr>
+              <tr>
+                <td><code>App.tsx</code></td>
+                <td>Uses reactive query + mutation calls and renders task list.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Design choices</h2>
+        <ul>
+          <li>Use package entrypoints only (no internal <code>src/</code> imports).</li>
+          <li>Keep writes in a compact command style similar to Supabase.</li>
+          <li>Avoid manual subscription lifecycles in component code.</li>
+          <li>Ship vendored enhanced package tarball for portable installs.</li>
+        </ul>
+      </section>
+
+      <p class="footer">Watermelon Expo Enhanced • Architecture</p>
+    </div>
+  </body>
+</html>

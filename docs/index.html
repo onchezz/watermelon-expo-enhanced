@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watermelon Expo Enhanced Docs</title>
+    <meta
+      name="description"
+      content="Full documentation for the Watermelon Expo Enhanced app and reactive WatermelonDB usage."
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="kicker">Expo + WatermelonDB</p>
+        <h1>Watermelon Expo Enhanced Documentation</h1>
+        <p class="subtitle">
+          Fully rebuilt docs for the enhanced local-first database workflow, including setup, reactive querying,
+          architecture, and production troubleshooting.
+        </p>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="./">Home</a>
+          <a href="./getting-started/">Getting Started</a>
+          <a href="./reactive-api/">Reactive API</a>
+          <a href="./architecture/">Architecture</a>
+          <a href="./troubleshooting/">Troubleshooting</a>
+          <a href="https://github.com/onchezz/watermelon-expo-enhanced">GitHub Repo</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <h2>What this project is</h2>
+        <p>
+          This Expo app uses your enhanced <code>@nozbe/watermelondb</code> package and exposes a simple
+          Supabase-like reactive API for local SQLite data. Components auto-update with
+          <code>useReactiveQuery</code> without manual subscription wiring.
+        </p>
+        <div class="callout">
+          <strong>Routing note:</strong> this site is now rebuilt with static HTML and includes compatibility
+          redirects for <code>/docs/*</code> URLs that were previously returning 404.
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Quick start</h2>
+        <pre><code>npm install
+npx expo run:android
+
+# checks
+npx tsc --noEmit
+CI=1 npx expo export --clear --platform android</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Documentation map</h2>
+        <div class="grid">
+          <article class="card">
+            <h3><a href="./getting-started/">Getting Started</a></h3>
+            <p>Environment setup, native run commands, and first launch validation.</p>
+          </article>
+          <article class="card">
+            <h3><a href="./reactive-api/">Reactive API</a></h3>
+            <p>How <code>createReactiveClient</code> and <code>useReactiveQuery</code> are used in app code.</p>
+          </article>
+          <article class="card">
+            <h3><a href="./architecture/">Architecture</a></h3>
+            <p>Schema, model layer, adapter wiring, and how UI updates stay in sync.</p>
+          </article>
+          <article class="card">
+            <h3><a href="./troubleshooting/">Troubleshooting</a></h3>
+            <p>Fixes for missing package errors, bad import paths, TS config conflicts, and native rebuild issues.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Key project paths</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Path</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>App.tsx</code></td>
+                <td>UI and reactive task list view.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/index.ts</code></td>
+                <td>Database + SQLite adapter initialization.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/reactive.ts</code></td>
+                <td>Reactive client factory and typed row interfaces.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/schema.ts</code></td>
+                <td>Watermelon schema definitions.</td>
+              </tr>
+              <tr>
+                <td><code>vendor/nozbe-watermelondb-0.28.1-0.tgz</code></td>
+                <td>Vendored enhanced package used by this app.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <p class="footer">Built for <code>onchezz/watermelon-expo-enhanced</code> • March 2, 2026</p>
+    </div>
+  </body>
+</html>

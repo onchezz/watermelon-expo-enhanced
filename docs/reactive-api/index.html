@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reactive API • Watermelon Expo Enhanced</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="kicker">API</p>
+        <h1>Reactive API Usage</h1>
+        <p class="subtitle">Use WatermelonDB in a Supabase-like style while keeping local-first behavior and performance.</p>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../">Home</a>
+          <a href="../getting-started/">Getting Started</a>
+          <a href="../reactive-api/">Reactive API</a>
+          <a href="../architecture/">Architecture</a>
+          <a href="../troubleshooting/">Troubleshooting</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <h2>Create the client</h2>
+        <pre><code>import { createReactiveClient } from '@nozbe/watermelondb'
+import { database } from './index'
+
+export const reactive = createReactiveClient(database)</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Read reactively in a component</h2>
+        <pre><code>import { useReactiveQuery } from '@nozbe/watermelondb/reactive/react'
+
+const { data, isLoading, error } = useReactiveQuery(
+  () => reactive.from('tasks').order('created_at', { ascending: false }),
+  [],
+)
+</code></pre>
+        <p>No manual <code>useEffect</code> subscription boilerplate is required.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Insert</h2>
+        <pre><code>await reactive.from('tasks').insert({
+  name: 'Ship docs update',
+  is_done: false,
+  created_at: Date.now(),
+})</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Update</h2>
+        <pre><code>await reactive
+  .from('tasks')
+  .eq('id', taskId)
+  .update({ is_done: true })</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Delete</h2>
+        <pre><code>await reactive
+  .from('tasks')
+  .eq('id', taskId)
+  .delete()</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Important local-first note</h2>
+        <div class="callout">
+          <strong>WatermelonDB is local.</strong> Query fields like <code>project_id</code> are only valid if that column
+          exists in your local schema. There is no remote table unless your app adds sync logic.
+        </div>
+      </section>
+
+      <p class="footer">Watermelon Expo Enhanced • Reactive API</p>
+    </div>
+  </body>
+</html>

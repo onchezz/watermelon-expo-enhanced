@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started • Watermelon Expo Enhanced</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="kicker">Guide</p>
+        <h1>Getting Started</h1>
+        <p class="subtitle">Set up the app, run native builds, and validate that the enhanced WatermelonDB build is active.</p>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../">Home</a>
+          <a href="../getting-started/">Getting Started</a>
+          <a href="../reactive-api/">Reactive API</a>
+          <a href="../architecture/">Architecture</a>
+          <a href="../troubleshooting/">Troubleshooting</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <h2>1. Install dependencies</h2>
+        <pre><code>npm install</code></pre>
+        <p>
+          This app installs WatermelonDB from a vendored tarball so clones can run without depending on local sibling
+          paths.
+        </p>
+        <pre><code>vendor/nozbe-watermelondb-0.28.1-0.tgz</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>2. Run native app</h2>
+        <pre><code># Android
+npx expo run:android
+
+# iOS
+npx expo run:ios</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>3. Compile checks</h2>
+        <pre><code>npx tsc --noEmit
+CI=1 npx expo export --clear --platform android</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>4. Verify reactive flow</h2>
+        <ul>
+          <li>Create a task from the input in the app.</li>
+          <li>Observe the task list update immediately without writing manual subscription logic.</li>
+          <li>Tap a task to toggle <code>is_done</code> and confirm UI updates from local DB state.</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>5. Update to a newer enhanced DB package</h2>
+        <pre><code># from watermelondb-enhanced clone
+npm install
+npm run build
+cd dist
+npm pack
+
+# copy new tgz into this repo vendor/ then
+npm install</code></pre>
+      </section>
+
+      <p class="footer">Watermelon Expo Enhanced • Getting Started</p>
+    </div>
+  </body>
+</html>

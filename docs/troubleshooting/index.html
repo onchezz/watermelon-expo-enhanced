@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Troubleshooting • Watermelon Expo Enhanced</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="kicker">Support</p>
+        <h1>Troubleshooting</h1>
+        <p class="subtitle">Known errors and exact fixes for this enhanced Expo + WatermelonDB setup.</p>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../">Home</a>
+          <a href="../getting-started/">Getting Started</a>
+          <a href="../reactive-api/">Reactive API</a>
+          <a href="../architecture/">Architecture</a>
+          <a href="../troubleshooting/">Troubleshooting</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <h2>Page Not Found on GitHub Pages</h2>
+        <p>
+          This site uses GitHub Pages source <code>main:/docs</code>. Root URL is:
+          <code>https://onchezz.github.io/watermelon-expo-enhanced/</code>
+        </p>
+        <p>
+          Older links that included <code>/docs</code> are now handled by compatibility redirects included in this
+          rebuild.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Syntax error from Flow decorators (`@lazy`)</h2>
+        <p>Cause: imports from internal package source path, for example <code>@nozbe/watermelondb/src/...</code>.</p>
+        <p>Fix: use package entrypoints only.</p>
+        <pre><code>@nozbe/watermelondb
+@nozbe/watermelondb/adapters/sqlite
+@nozbe/watermelondb/reactive/react</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>TypeScript: <code>import type</code> only in TS files</h2>
+        <p>Fix by using <code>.ts/.tsx</code> files for type-only imports, or use normal <code>import</code>.</p>
+      </section>
+
+      <section class="panel">
+        <h2>TS5053: <code>emitDeclarationOnly</code> with <code>noEmit</code></h2>
+        <p>These options cannot be enabled together in the same TypeScript config run.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Dependency not found for <code>@nozbe/watermelondb</code></h2>
+        <pre><code>npm install</code></pre>
+        <p>Confirm vendored package exists:</p>
+        <pre><code>vendor/nozbe-watermelondb-0.28.1-0.tgz</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>Native app stale after dependency changes</h2>
+        <pre><code>npx expo run:android
+# or
+npx expo run:ios</code></pre>
+      </section>
+
+      <p class="footer">Watermelon Expo Enhanced • Troubleshooting</p>
+    </div>
+  </body>
+</html>

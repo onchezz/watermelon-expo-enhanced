@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-top: #f7fff9;
+  --bg-bottom: #e9f7ef;
+  --ink: #112018;
+  --muted: #3c4c43;
+  --brand: #0f7b4a;
+  --brand-deep: #0a5b35;
+  --brand-soft: #d9f4e5;
+  --accent: #d96a0b;
+  --surface: #ffffff;
+  --surface-border: #d8e5dd;
+  --code-bg: #0f1f18;
+  --code-ink: #e5f8ec;
+  --danger: #b42318;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --shadow: 0 14px 32px rgba(12, 40, 24, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+  line-height: 1.6;
+}
+
+a {
+  color: var(--brand-deep);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--brand);
+}
+
+.page {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.hero {
+  margin-top: 20px;
+  background: radial-gradient(circle at 16% 18%, #e9ffe7 0%, #d7f6e5 40%, #c2ebda 100%);
+  border: 1px solid #c5ddcf;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 26px 24px;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #1f5d3b;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(1.75rem, 2.4vw + 1rem, 2.9rem);
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 72ch;
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--brand-deep);
+}
+
+.nav a:hover {
+  border-color: var(--brand);
+  transform: translateY(-1px);
+}
+
+.panel {
+  margin-top: 18px;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 0 8px 18px rgba(8, 34, 20, 0.05);
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.35rem;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  background: #fbfffc;
+  border: 1px solid #dceae1;
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.callout {
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff8ee;
+  margin: 14px 0;
+}
+
+.callout strong {
+  color: #944207;
+}
+
+code,
+pre {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #e6f4eb;
+  color: #0f5f36;
+  font-size: 0.93em;
+}
+
+pre {
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 10px;
+  overflow-x: auto;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border: 1px solid #1f3a2d;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fcfffd;
+}
+
+th,
+td {
+  border: 1px solid #dae8df;
+  text-align: left;
+  padding: 10px;
+  vertical-align: top;
+}
+
+th {
+  background: #e8f7ee;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+.footer {
+  margin-top: 22px;
+  font-size: 0.92rem;
+  color: #3a4c41;
+  text-align: center;
+}
+
+.error-title {
+  font-size: clamp(2rem, 6vw, 3.8rem);
+  margin: 0;
+}
+
+.error-subtitle {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand);
+  border: 1px solid #0e6a41;
+}
+
+.button:hover {
+  background: var(--brand-deep);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 18px 16px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+}

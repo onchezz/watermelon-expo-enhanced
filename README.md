@@ -84,11 +84,18 @@ npm install
 
 ## Project docs
 
-- Docs index: `docs/index.md`
-- Getting started: `docs/getting-started.md`
-- Reactive API guide: `docs/reactive-api.md`
-- Architecture notes: `docs/architecture.md`
-- Troubleshooting: `docs/troubleshooting.md`
+- Live site: `https://onchezz.github.io/watermelon-expo-enhanced/`
+- Home: `docs/index.html`
+- Getting started: `docs/getting-started/index.html`
+- Reactive API guide: `docs/reactive-api/index.html`
+- Architecture notes: `docs/architecture/index.html`
+- Troubleshooting: `docs/troubleshooting/index.html`
+- Compatibility redirects for old links:
+  - `docs/docs/index.html`
+  - `docs/docs/getting-started/index.html`
+  - `docs/docs/reactive-api/index.html`
+  - `docs/docs/architecture/index.html`
+  - `docs/docs/troubleshooting/index.html`
 
 ## Notes
 
