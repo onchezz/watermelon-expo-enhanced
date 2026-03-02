@@ -89,14 +89,14 @@ await supabaseLocal.tasks.clearCompleted()
 
 The vendored tarball is generated from:
 
-- Enhanced fork: `https://github.com/onchezz/watermelondb-enhanced`
+- Enhanced fork: `https://github.com/onchezz/watermelondb-localfirst`
 - Branch: `codex/enhancement-bootstrap`
-- Full packaging guide: `https://github.com/onchezz/watermelondb-enhanced/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md`
+- Full packaging guide: `https://github.com/onchezz/watermelondb-localfirst/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md`
 
 Refresh flow:
 
 ```bash
-# in the watermelondb-enhanced repo clone
+# in the watermelondb-localfirst repo clone
 git checkout codex/enhancement-bootstrap
 npm install
 npm run build
