@@ -38,7 +38,7 @@
         <p>Use published npm package when available:</p>
         <pre><code>npm run setup:db:npm
 # or pin exact version
-./scripts/setup-enhanced-db.sh npm @onchezz/watermelondb-localfirst@0.28.1-0.enhanced.0</code></pre>
+./scripts/setup-enhanced-db.sh npm @onchezz/hyperdb@0.28.1-0.enhanced.0</code></pre>
       </section>
 
       <section class="panel">
@@ -68,18 +68,18 @@ CI=1 npx expo export --clear --platform android</code></pre>
 
       <section class="panel">
         <h2>6. Build and publish package from fork</h2>
-        <pre><code># in watermelondb-localfirst repo
+        <pre><code># in hyperDb repo
 npm run build:enhanced:npm
 npm run publish:enhanced:npm</code></pre>
         <p>
           Detailed packaging guide:
-          <a href="https://github.com/onchezz/watermelondb-localfirst/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md">NPM_PACKAGE_SETUP.md</a>
+          <a href="https://github.com/onchezz/hyperDb/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md">NPM_PACKAGE_SETUP.md</a>
         </p>
       </section>
 
       <section class="panel">
         <h2>7. Update vendored tarball from fork</h2>
-        <pre><code># from watermelondb-localfirst clone
+        <pre><code># from hyperDb clone
 npm install
 npm run build
 cd dist

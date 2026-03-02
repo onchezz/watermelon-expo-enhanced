@@ -45,10 +45,10 @@ Switch to published npm package (once published):
 ```bash
 npm run setup:db:npm
 # or pin a specific version
-./scripts/setup-enhanced-db.sh npm @onchezz/watermelondb-localfirst@0.28.1-0.enhanced.0
+./scripts/setup-enhanced-db.sh npm @onchezz/hyperdb@0.28.1-0.enhanced.0
 ```
 
-This script keeps app imports unchanged by mapping `@nozbe/watermelondb` to `npm:@onchezz/watermelondb-localfirst@...`.
+This script keeps app imports unchanged by mapping `@nozbe/watermelondb` to `npm:@onchezz/hyperdb@...`.
 
 ## Database wiring
 
@@ -89,14 +89,14 @@ await supabaseLocal.tasks.clearCompleted()
 
 The vendored tarball is generated from:
 
-- Enhanced fork: `https://github.com/onchezz/watermelondb-localfirst`
+- Enhanced fork: `https://github.com/onchezz/hyperDb`
 - Branch: `codex/enhancement-bootstrap`
-- Full packaging guide: `https://github.com/onchezz/watermelondb-localfirst/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md`
+- Full packaging guide: `https://github.com/onchezz/hyperDb/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md`
 
 Refresh flow:
 
 ```bash
-# in the watermelondb-localfirst repo clone
+# in the hyperDb repo clone
 git checkout codex/enhancement-bootstrap
 npm install
 npm run build
