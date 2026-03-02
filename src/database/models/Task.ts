@@ -1,4 +1,4 @@
-import { Model } from '@nozbe/watermelondb';
+import { Model } from '@onchez/hypertilldb';
 
 export class Task extends Model {
   static table = 'tasks';

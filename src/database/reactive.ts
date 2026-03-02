@@ -1,4 +1,4 @@
-import { createReactiveClient } from '@nozbe/watermelondb';
+import { createReactiveClient } from '@onchez/hypertilldb';
 
 import { database } from '.';
 

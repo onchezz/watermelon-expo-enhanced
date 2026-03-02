@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useMemo, useState } from 'react';
 import { FlatList, Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useReactiveQuery } from '@nozbe/watermelondb/reactive/react';
+import { useReactiveQuery } from '@onchez/hypertilldb/reactive/react';
 
 import { supabaseLocal, type TaskStatusFilter } from './src/database/localFirst';
 import type { TaskRow } from './src/database/reactive';

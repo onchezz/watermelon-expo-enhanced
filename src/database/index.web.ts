@@ -1,15 +1,16 @@
 import { Database } from '@onchez/hypertilldb';
-import SQLiteAdapter from '@onchez/hypertilldb/adapters/sqlite';
+import LokiJSAdapter from '@onchez/hypertilldb/adapters/lokijs';
 
 import { Task } from './models/Task';
 import { schema } from './schema';
 
-const adapter = new SQLiteAdapter({
+const adapter = new LokiJSAdapter({
   schema,
-  dbName: 'watermelon_expo',
-  jsi: true,
+  dbName: 'hypertill_expo_web',
+  useWebWorker: false,
+  useIncrementalIndexedDB: true,
   onSetUpError: (error: unknown) => {
-    console.error('HyperTillDB setup error', error);
+    console.error('HyperTillDB web setup error', error);
   },
 });
 
