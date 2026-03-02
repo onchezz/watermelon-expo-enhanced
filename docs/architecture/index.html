@@ -24,7 +24,9 @@
       <section class="panel">
         <h2>Flow overview</h2>
         <pre><code>UI (App.tsx)
-  -> useReactiveQuery(() => reactive.from('tasks')...)
+  -> useReactiveQuery(() => supabaseLocal.tasks.query(...))
+Local-first Service (src/database/localFirst.ts)
+  -> create / rename / toggle / clearCompleted / seedDemoIfEmpty
 Reactive Client (src/database/reactive.ts)
   -> createReactiveClient(database)
 Database (src/database/index.ts)
@@ -59,6 +61,14 @@ SQLite Adapter
               <tr>
                 <td><code>src/database/reactive.ts</code></td>
                 <td>Exports reactive query client and row types.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/localFirst.ts</code></td>
+                <td>Supabase-style API wrapper around WatermelonDB for working local-first CRUD and query helpers.</td>
+              </tr>
+              <tr>
+                <td><code>src/database/examples/supabaseLocalExamples.ts</code></td>
+                <td>Executable examples showing create/list/toggle/rename/subscribe usage.</td>
               </tr>
               <tr>
                 <td><code>App.tsx</code></td>

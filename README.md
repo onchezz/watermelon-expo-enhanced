@@ -6,7 +6,8 @@ Expo + React Native starter app wired to the enhanced WatermelonDB fork and the 
 
 - Native Expo app (`expo run:android`, `expo run:ios`)
 - Local-first task list backed by WatermelonDB SQLite
-- Reactivity without manual `useEffect` subscriptions
+- Supabase-style local-first service layer (`src/database/localFirst.ts`)
+- Reactivity without manual `useEffect` subscriptions for data wiring
 - Vendored enhanced package tarball:
   - `vendor/nozbe-watermelondb-0.28.1-0.tgz`
 
@@ -31,6 +32,24 @@ npx tsc --noEmit
 CI=1 npx expo export --clear --platform android
 ```
 
+## Installation modes
+
+Use vendored tarball (default, already configured):
+
+```bash
+npm run setup:db:vendor
+```
+
+Switch to published npm package (once published):
+
+```bash
+npm run setup:db:npm
+# or pin a specific version
+./scripts/setup-enhanced-db.sh npm @onchezz/watermelondb-localfirst@0.28.1-0.enhanced.0
+```
+
+This script keeps app imports unchanged by mapping `@nozbe/watermelondb` to `npm:@onchezz/watermelondb-localfirst@...`.
+
 ## Database wiring
 
 Main files:
@@ -39,6 +58,8 @@ Main files:
 - `src/database/models/Task.ts`
 - `src/database/index.ts`
 - `src/database/reactive.ts`
+- `src/database/localFirst.ts`
+- `src/database/examples/supabaseLocalExamples.ts`
 - `App.tsx`
 
 Reactive reads in components:
@@ -53,12 +74,16 @@ const { data, isLoading, error } = useReactiveQuery(
 Writes:
 
 ```tsx
-await reactive.from<TaskRow>('tasks').insert({
-  name: value,
-  is_done: false,
-  created_at: Date.now(),
-})
+await supabaseLocal.tasks.create('Ship local-first feature')
+await supabaseLocal.tasks.toggle(taskId, false)
+await supabaseLocal.tasks.clearCompleted()
 ```
+
+## Persistence behavior
+
+- Data is stored locally in SQLite database `watermelon_expo`.
+- Data should persist across Metro reloads and app restarts.
+- Data resets if the app is uninstalled or if you explicitly reset storage.
 
 ## Update to a newer enhanced DB build
 
@@ -66,6 +91,7 @@ The vendored tarball is generated from:
 
 - Enhanced fork: `https://github.com/onchezz/watermelondb-enhanced`
 - Branch: `codex/enhancement-bootstrap`
+- Full packaging guide: `https://github.com/onchezz/watermelondb-enhanced/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md`
 
 Refresh flow:
 

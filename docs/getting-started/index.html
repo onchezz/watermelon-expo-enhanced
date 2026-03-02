@@ -32,7 +32,17 @@
       </section>
 
       <section class="panel">
-        <h2>2. Run native app</h2>
+        <h2>2. Choose DB source</h2>
+        <p>Default (vendored tarball):</p>
+        <pre><code>npm run setup:db:vendor</code></pre>
+        <p>Use published npm package when available:</p>
+        <pre><code>npm run setup:db:npm
+# or pin exact version
+./scripts/setup-enhanced-db.sh npm @onchezz/watermelondb-localfirst@0.28.1-0.enhanced.0</code></pre>
+      </section>
+
+      <section class="panel">
+        <h2>3. Run native app</h2>
         <pre><code># Android
 npx expo run:android
 
@@ -41,22 +51,34 @@ npx expo run:ios</code></pre>
       </section>
 
       <section class="panel">
-        <h2>3. Compile checks</h2>
+        <h2>4. Compile checks</h2>
         <pre><code>npx tsc --noEmit
 CI=1 npx expo export --clear --platform android</code></pre>
       </section>
 
       <section class="panel">
-        <h2>4. Verify reactive flow</h2>
+        <h2>5. Verify reactive flow</h2>
         <ul>
           <li>Create a task from the input in the app.</li>
           <li>Observe the task list update immediately without writing manual subscription logic.</li>
           <li>Tap a task to toggle <code>is_done</code> and confirm UI updates from local DB state.</li>
+          <li>Use <code>Seed Demo</code> to insert sample rows once only when table is empty.</li>
         </ul>
       </section>
 
       <section class="panel">
-        <h2>5. Update to a newer enhanced DB package</h2>
+        <h2>6. Build and publish package from fork</h2>
+        <pre><code># in watermelondb-enhanced repo
+npm run build:enhanced:npm
+npm run publish:enhanced:npm</code></pre>
+        <p>
+          Detailed packaging guide:
+          <a href="https://github.com/onchezz/watermelondb-enhanced/blob/codex/enhancement-bootstrap/NPM_PACKAGE_SETUP.md">NPM_PACKAGE_SETUP.md</a>
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>7. Update vendored tarball from fork</h2>
         <pre><code># from watermelondb-enhanced clone
 npm install
 npm run build

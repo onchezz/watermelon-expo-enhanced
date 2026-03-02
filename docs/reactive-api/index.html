@@ -30,40 +30,57 @@ export const reactive = createReactiveClient(database)</code></pre>
       </section>
 
       <section class="panel">
+        <h2>Supabase-style local-first service</h2>
+        <pre><code>import { supabaseLocal } from './src/database/localFirst'
+
+await supabaseLocal.tasks.create('Draft release notes')
+await supabaseLocal.tasks.toggle(taskId, false)
+await supabaseLocal.tasks.rename(taskId, 'Publish docs')
+await supabaseLocal.tasks.clearCompleted()</code></pre>
+      </section>
+
+      <section class="panel">
         <h2>Read reactively in a component</h2>
         <pre><code>import { useReactiveQuery } from '@nozbe/watermelondb/reactive/react'
+import { supabaseLocal } from './src/database/localFirst'
 
 const { data, isLoading, error } = useReactiveQuery(
-  () => reactive.from('tasks').order('created_at', { ascending: false }),
-  [],
+  () => supabaseLocal.tasks.query({ status: 'open', limit: 100 }),
+  ['open'],
 )
 </code></pre>
         <p>No manual <code>useEffect</code> subscription boilerplate is required.</p>
       </section>
 
       <section class="panel">
-        <h2>Insert</h2>
-        <pre><code>await reactive.from('tasks').insert({
-  name: 'Ship docs update',
-  is_done: false,
-  created_at: Date.now(),
+        <h2>Filter + paginate query</h2>
+        <pre><code>const page = 0
+const pageSize = 20
+
+const tasks = await supabaseLocal.tasks.fetch({
+  status: 'open',
+  from: page * pageSize,
+  to: page * pageSize + pageSize - 1,
 })</code></pre>
       </section>
 
       <section class="panel">
-        <h2>Update</h2>
-        <pre><code>await reactive
-  .from('tasks')
-  .eq('id', taskId)
-  .update({ is_done: true })</code></pre>
+        <h2>Subscribe manually (without hooks)</h2>
+        <pre><code>const unsubscribe = supabaseLocal.tasks.subscribe(
+  { status: 'all' },
+  ({ data, error }) => {
+    if (error) return
+    console.log('rows', data?.length ?? 0)
+  },
+)
+
+// later
+unsubscribe()</code></pre>
       </section>
 
       <section class="panel">
-        <h2>Delete</h2>
-        <pre><code>await reactive
-  .from('tasks')
-  .eq('id', taskId)
-  .delete()</code></pre>
+        <h2>Seed demo data once</h2>
+        <pre><code>await supabaseLocal.tasks.seedDemoIfEmpty()</code></pre>
       </section>
 
       <section class="panel">

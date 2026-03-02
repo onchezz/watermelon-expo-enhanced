@@ -45,11 +45,16 @@
       <section class="panel">
         <h2>Quick start</h2>
         <pre><code>npm install
+npm run setup:db:vendor
 npx expo run:android
 
 # checks
 npx tsc --noEmit
 CI=1 npx expo export --clear --platform android</code></pre>
+        <p>
+          To consume the published enhanced package instead of vendored tarball:
+          <code>npm run setup:db:npm</code>
+        </p>
       </section>
 
       <section class="panel">

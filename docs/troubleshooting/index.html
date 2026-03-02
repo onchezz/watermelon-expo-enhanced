@@ -66,6 +66,16 @@
 npx expo run:ios</code></pre>
       </section>
 
+      <section class="panel">
+        <h2>Example data keeps resetting</h2>
+        <ul>
+          <li>Normal Metro reloads should not wipe SQLite data.</li>
+          <li>Uninstalling the app will remove local DB files.</li>
+          <li>Changing Android application id / iOS bundle id creates a new app sandbox and new DB.</li>
+          <li><code>seedDemoIfEmpty()</code> only inserts demo rows if the table is empty.</li>
+        </ul>
+      </section>
+
       <p class="footer">Watermelon Expo Enhanced • Troubleshooting</p>
     </div>
   </body>
